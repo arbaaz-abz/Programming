@@ -6,7 +6,7 @@ the lower and upper bounds if the given binary tree is a BST.
 
 Preferred compiler - GCC 4.8.0 and above
 
-Input - Numer of nodes, tree(in its array representation)
+Input - Number of nodes, binary tree(in its array representation)
 Output - "BST" or "Not a BST"
 */
 
