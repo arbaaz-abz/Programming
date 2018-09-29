@@ -1,6 +1,6 @@
 /*Recursive method to check whether a given binary tree is a BST
 The idea is to start at root with infinite range(max range of int),
-and then changing the lower and upper bound for left and right subtrees
+and then changing the upper and lower bound for left and right subtrees
 respectively. For each recursive step, the value of current node must lie between
 the lower and upper bounds if the given binary tree is a BST.
 
