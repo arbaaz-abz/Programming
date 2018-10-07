@@ -1,0 +1,60 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class MaximumSumSubSeq 
+{
+	public static void main (String[] args) 
+  {
+		Scanner in = new Scanner(System.in);
+	
+		
+		/*--------------Take Input : Array Length 
+		                           : Array  ------------------------------*/
+		              
+		int n = in.nextInt();
+		int arr[] = new int[n];
+		for(int i = 0;i<n;i++)
+		{
+		    arr[i] = in.nextInt();
+		}
+		
+		/*-------------------- Initialize an array to store intermediate SubSequence Sum values ------------- */
+		
+    int SeqSum[] = new int[n];
+		SeqSum[0] = arr[0];
+    
+		/*----------------------Simultaenously keep track of the maximum sum found ---------------------------*/
+		int maxsum = arr[0];
+		
+		for(int i = 1;i<n;i++)
+		{   
+		    SeqSum[i] = arr[i];
+		    /*----------------------------------------- 
+		    For the ith element the sum will be it's value added
+		    to already found "max sum subsequence" SeqSum[j] such that
+		    j<i and SeqSum is maximum of all the (j=0 to j=i) elements.
+		    
+		    -------------------------------------------*/
+		    int maxtillnow = i;
+		    int maxsubsum = 0;
+		    for(int j = 0;j<i;j++)
+		    {
+		        if(arr[j]<arr[i])
+		        {
+		            if(SeqSum[j]>maxsubsum)
+		            {
+		                   maxtillnow = j;
+                           maxsubsum = SeqSum[j]; 
+		            }
+		        }
+		    }
+		    
+		    SeqSum[i]+=maxsubsum;
+		    
+		    if(maxsum < SeqSum[i])
+		        maxsum = SeqSum[i];
+		}
+		System.out.println(maxsum);
+	}
+}
