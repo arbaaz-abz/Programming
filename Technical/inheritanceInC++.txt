@@ -1,0 +1,48 @@
+class Base
+{
+    public:
+        int m_public;
+    private:
+        int m_private;
+    protected:
+        int m_protected;
+};
+class Pri: public Base // note: private inheritance
+{
+        // Public inheritance means:
+        // Public inherited members stay public (so m_public is treated as private)
+        // Protected inherited members stay protected (so m_protected is treated as private)
+        // Private inherited members stay inaccessible (so m_private is inaccessible)
+        Pri()
+        {
+            m_public = 1; // okay: m_public is now public in Pri
+            m_private = 2; // not okay: derived classes can't access private members in the base class
+            m_protected = 3; // okay: m_protected is now protected in Pri
+        }
+}; 
+class Pri: private Base // note: private inheritance
+{
+        // Private inheritance means:
+        // Public inherited members become private (so m_public is treated as private)
+        // Protected inherited members become private (so m_protected is treated as private)
+        // Private inherited members stay inaccessible (so m_private is inaccessible)
+        Pri()
+        {
+            m_public = 1; // okay: m_public is now private in Pri
+            m_private = 2; // not okay: derived classes can't access private members in the base class
+            m_protected = 3; // okay: m_protected is now private in Pri
+        }
+};
+class Pri: protected Base // note: private inheritance
+{
+        // Protected inheritance means:
+        // Public inherited members become Protected (so m_public is treated as private)
+        // Protected inherited members stay Protected (so m_protected is treated as private)
+        // Private inherited members stay inaccessible (so m_private is inaccessible)
+        Pri()
+        {
+            m_public = 1; // okay: m_public is now private in Pri
+            m_private = 2; // not okay: derived classes can't access private members in the base class
+            m_protected = 3; // okay: m_protected is now private in Pri
+        }
+};
