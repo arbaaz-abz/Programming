@@ -1,7 +1,7 @@
 /*
 	Reversing each word of a given string 
 	Eg :	input  : Hello World 
-			output : olleH dlroW
+		output : olleH dlroW
 
 	1. Input a sentence as a string , convert it to a char array
 	2. Pass the array to the reverse_str function
